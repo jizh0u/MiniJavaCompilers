@@ -1,8 +1,5 @@
 // Generated from MiniJava.g4 by ANTLR 4.6
 
-    package mini_java.antlr;
-
-
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;

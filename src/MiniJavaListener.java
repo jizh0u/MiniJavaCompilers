@@ -1,7 +1,4 @@
 // Generated from MiniJava.g4 by ANTLR 4.6
-
-    package mini_java.antlr;
-
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
