@@ -10,23 +10,13 @@ import java.util.*;
 
 public class MiniJavaMain {
 
-    private static String inputFile = null;
-
     public static void main(String[] args) throws IOException, FileNotFoundException {
-        InputStream is = null;
-
-        ANTLRInputStream input = new ANTLRInputStream(is);
+        ANTLRInputStream input = new ANTLRInputStream(System.in);
         MiniJavaLexer lexer = new MiniJavaLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         MiniJavaParser parser = new MiniJavaParser(tokens);
 
-        if (args.length > 0) {
-            inputFile = args[0];
-            is = new FileInputStream(inputFile);
-        } else {
-            is = System.in;
-        }
-
         ParseTree tree = parser.goal();
+        System.out.println(tree.toStringTree(parser));
     }
 }
