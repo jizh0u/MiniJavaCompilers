@@ -1,10 +1,4 @@
-/** Mini-Java ANTLR4 grammar **/
-
 grammar MiniJava;
-
-@header {
-    package mini_java.antlr;
-}
 
 goal
     :   mainClassDeclaration
