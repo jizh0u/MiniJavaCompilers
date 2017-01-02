@@ -10,13 +10,29 @@ import java.util.*;
 
 public class MiniJavaMain {
 
+    private static String inputFile = null;
+
     public static void main(String[] args) throws IOException, FileNotFoundException {
         ANTLRInputStream input = new ANTLRInputStream(System.in);
         MiniJavaLexer lexer = new MiniJavaLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         MiniJavaParser parser = new MiniJavaParser(tokens);
 
+        parser.removeErrorListeners();
+        parser.addErrorListener(new DiagnosticErrorListener());
+        parser.getInterpreter()
+                .setPredictionMode(PredictionMode.LL_EXACT_AMBIG_DETECTION);
+        parser.addErrorListener(new UnderlineErrorListener());
+
         ParseTree tree = parser.goal();
+
+        ErrorPrinter.exitIfError();
+
+
         System.out.println(tree.toStringTree(parser));
+    }
+
+    public static String getFileName() {
+        return inputFile;
     }
 }
