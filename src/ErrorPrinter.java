@@ -3,9 +3,6 @@
  */
 import org.antlr.v4.runtime.*;
 
-import java.rmi.registry.Registry;
-import java.util.*;
-
 public final class ErrorPrinter {
     private static boolean hasError = false;
     private static int errorCount = 0;

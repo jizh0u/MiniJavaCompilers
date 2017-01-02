@@ -8,7 +8,7 @@ public class ClassDef implements Scope {
 
     private String name;
 
-    private Map<String, Symbol> symTable = new HashMap<String, Symbol>();
+    private Map<String, Symbol> symTable = new HashMap<>();
 
     public ClassDef(String name) {
         this.name = name;
