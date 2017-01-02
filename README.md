@@ -23,5 +23,6 @@ Building the tool from source requires the [Antlr4 java library](http://www.antl
 	`javac *.java`
 
 5.	Run with test.java
+
 	`java -classpath "/path/to/antlr-4.6-complete.jar" MiniJavaMain test.java`
     
