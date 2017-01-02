@@ -12,8 +12,11 @@ public class MiniJavaMain {
 
     private static String inputFile = null;
 
-    public static void main(String[] args) throws IOException, FileNotFoundException {
-        ANTLRInputStream input = new ANTLRInputStream(System.in);
+    public static void main(String[] args) throws IOException {
+        inputFile = args[0];
+        InputStream is = new FileInputStream(inputFile);
+
+        ANTLRInputStream input = new ANTLRInputStream(is);
         MiniJavaLexer lexer = new MiniJavaLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         MiniJavaParser parser = new MiniJavaParser(tokens);
