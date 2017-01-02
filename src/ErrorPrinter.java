@@ -2,6 +2,8 @@
  * Created by Zhou on 2017/1/2.
  */
 import org.antlr.v4.runtime.*;
+
+import java.rmi.registry.Registry;
 import java.util.*;
 
 public final class ErrorPrinter {
@@ -56,9 +58,38 @@ public final class ErrorPrinter {
         System.err.println();
     }
 
-    public static void printDuplicateClassError(Recognizer recognizer, Token offendingToken, String className){
+    public static void printErrorMessage(Recognizer recognizer, Token offendingToken, String message) {
         ErrorPrinter.printFileNameAndLineNumber(offendingToken);
-        System.err.println("error: duplicate class: " + className);
+        System.err.println(message);
         ErrorPrinter.underlineError(recognizer, offendingToken);
+    }
+
+    public static void printDuplicateClassError(Recognizer recognizer, Token offendingToken, String className) {
+        String message = "error: duplicate class: " + className;
+        ErrorPrinter.printErrorMessage(recognizer, offendingToken, message);
+        System.err.println();
+    }
+
+    public static void printNoSuperClassError(Recognizer recognizer, Token offendingToken, String className) {
+        String message = "error: can not find symbol.";
+        ErrorPrinter.printErrorMessage(recognizer, offendingToken, message);
+        System.err.println("Symbol: Class " + className);
+        System.err.println();
+    }
+
+    public static void printCanNotFindSymbolError(Recognizer recognizer, Token offendingToken, String symbolName,
+                                                  String className) {
+        String message = "error: can not find symbol.";
+        ErrorPrinter.printErrorMessage(recognizer, offendingToken, message);
+        System.err.println("Symbol: Class " + symbolName);
+        System.err.println("Location: Class " + className);
+        System.err.println();
+    }
+
+    public static void printSymbolAlreadyDefinedError(Recognizer recognizer, Token offendingToken, String symbolType,
+                                                      String symbol, String className) {
+        String message = "error: " + symbolType + " " + symbol + " already defined in class " + className;
+        ErrorPrinter.printErrorMessage(recognizer, offendingToken, message);
+        System.err.println();
     }
 }

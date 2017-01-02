@@ -59,7 +59,8 @@ methodDeclaration
 methodBody
     :   '{'
             varDeclaration*
-            statement+
+            statement*
+            'return' expression ';'
         '}'
     ;
 
@@ -99,10 +100,6 @@ statement
     # assignStatement
     |   ID '[' expression ']' '=' expression ';'
     # arrayAssignStatement
-    |   'return' expression ';'
-    # returnStatement
-    |   'recur' expression '?' methodArgumentList ':' expression ';'
-    # recurStatement
     ;
 
 expression

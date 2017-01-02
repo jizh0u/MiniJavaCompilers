@@ -27,8 +27,14 @@ public class MiniJavaMain {
         ParseTree tree = parser.goal();
         ErrorPrinter.exitIfError();
 
-        ClassNameChecker classNameChecker = new ClassNameChecker(parser, new HashMap<String, ClassDef>());
+        Map<String, ClassDef> classes = new HashMap<>();
+        ClassNameChecker classNameChecker = new ClassNameChecker(parser, classes);
         ParseTreeWalker.DEFAULT.walk(classNameChecker, tree);
+        ErrorPrinter.exitIfError();
+
+        ParseTreeProperty<Scope> scopes = new ParseTreeProperty<>();
+        AssignmentChecker assignmentChecker = new AssignmentChecker(classes, scopes, parser);
+        ParseTreeWalker.DEFAULT.walk(assignmentChecker, tree);
         ErrorPrinter.exitIfError();
 
         System.out.println(tree.toStringTree(parser));

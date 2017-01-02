@@ -3,7 +3,7 @@
  */
 
 public class Symbol {
-    private String name;
+    protected String name;
 
     private ClassDef type;
 

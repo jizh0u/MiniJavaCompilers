@@ -229,30 +229,6 @@ public interface MiniJavaListener extends ParseTreeListener {
 	 */
 	void exitArrayAssignStatement(MiniJavaParser.ArrayAssignStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code returnStatement}
-	 * labeled alternative in {@link MiniJavaParser#statement}.
-	 * @param ctx the parse tree
-	 */
-	void enterReturnStatement(MiniJavaParser.ReturnStatementContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code returnStatement}
-	 * labeled alternative in {@link MiniJavaParser#statement}.
-	 * @param ctx the parse tree
-	 */
-	void exitReturnStatement(MiniJavaParser.ReturnStatementContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code recurStatement}
-	 * labeled alternative in {@link MiniJavaParser#statement}.
-	 * @param ctx the parse tree
-	 */
-	void enterRecurStatement(MiniJavaParser.RecurStatementContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code recurStatement}
-	 * labeled alternative in {@link MiniJavaParser#statement}.
-	 * @param ctx the parse tree
-	 */
-	void exitRecurStatement(MiniJavaParser.RecurStatementContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code ltExpression}
 	 * labeled alternative in {@link MiniJavaParser#expression}.
 	 * @param ctx the parse tree
