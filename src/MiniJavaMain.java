@@ -40,6 +40,8 @@ public class MiniJavaMain {
         ParseTreeWalker.DEFAULT.walk(assignmentChecker, tree);
         ErrorPrinter.exitIfError();
 
+        System.out.println("Successfully compiled!");
+        System.out.println("The AST:");
         System.out.println(tree.toStringTree(parser));
     }
 
