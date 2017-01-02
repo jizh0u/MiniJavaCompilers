@@ -56,4 +56,9 @@ public final class ErrorPrinter {
         System.err.println();
     }
 
+    public static void printDuplicateClassError(Recognizer recognizer, Token offendingToken, String className){
+        ErrorPrinter.printFileNameAndLineNumber(offendingToken);
+        System.err.println("error: duplicate class: " + className);
+        ErrorPrinter.underlineError(recognizer, offendingToken);
+    }
 }

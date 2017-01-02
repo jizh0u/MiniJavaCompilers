@@ -25,9 +25,11 @@ public class MiniJavaMain {
         parser.addErrorListener(new UnderlineErrorListener());
 
         ParseTree tree = parser.goal();
-
         ErrorPrinter.exitIfError();
 
+        ClassNameChecker classNameChecker = new ClassNameChecker(parser, new HashMap<String, ClassDef>());
+        ParseTreeWalker.DEFAULT.walk(classNameChecker, tree);
+        ErrorPrinter.exitIfError();
 
         System.out.println(tree.toStringTree(parser));
     }
