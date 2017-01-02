@@ -6,7 +6,6 @@ import java.util.*;
 public class Method extends Symbol implements Scope {
     private Map<String, Symbol> parameters = new LinkedHashMap<>();
     private Scope owner;
-    private Scope body;
     private Map<String, Symbol> locals = new HashMap<>();
     private Map<String, Symbol> initializedVariables = new HashMap<>();
 
@@ -73,36 +72,8 @@ public class Method extends Symbol implements Scope {
         parameters.put(parameter.getName(), parameter);
     }
 
-    public List<Symbol> getParameterList() {
-        return new ArrayList<Symbol>(parameters.values());
-    }
-
-    public List<ClassDef> getParameterListDefinition() {
-        List<Symbol> parameterList = getParameterList();
-        List<ClassDef> parameterListDefinition = new ArrayList<>();
-        for (Symbol var: parameterList) {
-            parameterListDefinition.add(var.getType());
-        }
-        return parameterListDefinition;
-    }
-
     public String toString() {
         return name;
     }
 
-    public String fullName() {
-        String fullName = this.getType().toString() + " ";
-        fullName += name;
-        fullName = fullName.substring(0, fullName.length() - 1);
-        boolean hasParameter = false;
-        for (Symbol parameter : parameters.values()) {
-            fullName += parameter.getType().getScopeName() + ", ";
-            hasParameter=true;
-        }
-        if (hasParameter) {
-            fullName = fullName.substring(0, fullName.length() - 2);
-        }
-        fullName += ")";
-        return fullName;
-    }
 }
